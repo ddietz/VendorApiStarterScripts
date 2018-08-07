@@ -1,0 +1,74 @@
+{
+    "orderId": -1,
+    "shipmentId": "12345678934857346",
+    "accountNumber": "TEST1234",
+    "internalVendorNumber": "12365123",
+    "lotIdentifier": "1234",
+    "itemCount": 12,
+    "memo": "Shipment memo line",
+    "lineItems": [
+      {
+        "memo": "Line Item 1 Memo",
+        "quantityOrdered": 4,
+        "unitPrice": 5.86,
+        "sku": "0737411",
+        "upc": "371401007609",
+        "lineNumber": "1",
+        "itemSize": "EA",
+        "description": "Natra-Bio Allergy Relief"
+      }
+    ],
+    "pricingSummary": {
+      "additionalDiscount": 1.01,
+      "grossTotal": 23.44,
+      "netTotal": 22.43,
+      "taxes": 0
+    },
+    "shipment": {
+      "shipDate": "2018-07-25T17:16:59.519Z",
+      "estimatedDeliveryDate": "2018-07-25T17:16:59.519Z",
+      "trackingNumber": "1234",
+      "billOfLadingNumber": "5678",
+      "carrierReferenceNumber": "1ZY840680341707140",
+      "packagingType": "Carton",
+      "packageCount": 1,
+      "weight": 1.2,
+      "weightUnit": "LB",
+      "shippingContainerCodes": [
+        "12345"
+      ]
+    },
+    "carrier": {
+      "identificationCode": "UPS",
+      "routing": "1ZY840680341707140"
+    },
+    "senderContactInformation": {
+      "dunsNumber": "12345678901234",
+      "buyerAssignedCode": "123563",
+      "name": "Testy McTesterson",
+      "phone": "515-556-7890",
+      "email": "testy.mctesterson@testing.test",
+      "address": {
+        "address1": "123 Test Rd",
+        "address2": "Suite 100",
+        "city": "Orlando",
+        "country": "USA",
+        "postalCode": "32819",
+        "state": "FL"
+      }
+    },
+    "destinationContactInformation": {
+      "dunsNumber": "12345678901234",
+      "buyerAssignedCode": "123563",
+      "name": "Jack Johnson",
+      "phone": "727-345-6789",
+      "email": "jack.johnson@another.test",
+      "address": {
+        "address1": "368 Knickerbocker Ave",
+        "city": "Brooklyn",
+        "country": "USA",
+        "postalCode": "11237",
+        "state": "NY"
+      }
+    }
+  }

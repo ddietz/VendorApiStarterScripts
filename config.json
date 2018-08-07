@@ -1,0 +1,14 @@
+{
+  "debug": true,
+  "outputToConsole": true,
+  "clientId": "GeniusCentral-Test",
+  "clientSecret": "4F35C24A-32CD-43E3-B9E8-E2A7CE995945",
+  "identityAPIUri": "https://idsrv.dev.geniuscentral.com/connect/token",
+  "orderingAPIUri": "https://posapi.dev.geniuscentral.com/",
+  "posAPIUri": "https://posapi.dev.geniuscentral.com/",
+  "logFile": "LogFiles\\",
+  "acknowledgementsJsonPath": "Samples\\Acknowledgements",
+  "acknowledgementsHistoryPath": "Samples\\Acknowledgements\\History",
+  "shippingNoticeJsonPath": "Samples\\ShippingNotices",
+  "shippingNoticeHistoryPath": "Samples\\ShippingNotices\\History"
+}
