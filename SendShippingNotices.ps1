@@ -11,6 +11,7 @@ $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
 If(!(Test-Path $config.logFile)) { New-Item $config.logFile -type directory }
 If(!(Test-Path $config.shippingNoticeJsonPath)) { New-Item $config.shippingNoticeJsonPath -type directory }
 If(!(Test-Path $config.shippingNoticeHistoryPath)) { New-Item $config.shippingNoticeHistoryPath -type directory }
+If(!(Test-Path $config.shippingNoticeFailedPath)) { New-Item $config.shippingNoticeFailedPath -type directory }
 
 # Simplified logging
 function Add-LogEntry([string]$message) {
@@ -31,9 +32,10 @@ try {
 
         # Iterate over each file
         Get-ChildItem -File $config.shippingNoticeJsonPath | ForEach-Object {
-            Add-LogEntry "Processing file $($_.FullName)..."
+            $file = $_;
+            Add-LogEntry "Processing file $($file.FullName)..."
             try {
-                $body = Get-Content -Raw -Path $_.FullName
+                $body = Get-Content -Raw -Path $file.FullName
                 $data = $body | ConvertFrom-Json
                 $url = "$($config.posAPIUri)edi/orders/$($data.orderId)/shipping-notices"
 
@@ -41,12 +43,14 @@ try {
                 if ($config.debug) { Add-LogEntry "Got result: $(ConvertTo-Json $result)" }
 
                 if ($test -eq $false) {
-                    $destination = [System.IO.Path]::Combine($config.shippingNoticeHistoryPath, $_.Name)
-                    Move-Item -Force -Path $_.FullName -Destination $destination
-                    Add-LogEntry "Moved $($_.Name) to $destination"
+                    $destination = [System.IO.Path]::Combine($config.shippingNoticeHistoryPath, $file.Name)
+                    Move-Item -Force -Path $file.FullName -Destination $destination
+                    Add-LogEntry "Moved $($file.Name) to $destination"
                 }
             }
             catch {
+                $destination = [System.IO.Path]::Combine($config.shippingNoticeFailedPath, $file.Name)
+                Move-Item -Force -Path $file.FullName -Destination $destination
                 Add-LogEntry "Failed to send shipping notice. $($_.Exception.Message)"
             }
         }

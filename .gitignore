@@ -2,3 +2,4 @@
 .vscode
 LogFiles
 Samples/**/History
+Samples/**/Failed

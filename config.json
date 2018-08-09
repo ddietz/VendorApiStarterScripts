@@ -9,6 +9,8 @@
   "logFile": "LogFiles\\",
   "acknowledgementsJsonPath": "Samples\\Acknowledgements",
   "acknowledgementsHistoryPath": "Samples\\Acknowledgements\\History",
+  "acknowledgementsFailedPath": "Samples\\Acknowledgements\\Failed",
   "shippingNoticeJsonPath": "Samples\\ShippingNotices",
-  "shippingNoticeHistoryPath": "Samples\\ShippingNotices\\History"
+  "shippingNoticeHistoryPath": "Samples\\ShippingNotices\\History",
+  "shippingNoticeFailedPath": "Samples\\ShippingNotices\\Failed"
 }

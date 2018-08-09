@@ -11,6 +11,7 @@ $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
 If(!(Test-Path $config.logFile)) { New-Item $config.logFile -type directory }
 If(!(Test-Path $config.acknowledgementsJsonPath)) { New-Item $config.acknowledgementsJsonPath -type directory }
 If(!(Test-Path $config.acknowledgementsHistoryPath)) { New-Item $config.acknowledgementsHistoryPath -type directory }
+If(!(Test-Path $config.acknowledgementsFailedPath)) { New-Item $config.acknowledgementsFailedPath -type directory }
 
 # Simplified logging
 function Add-LogEntry([string]$message) {
@@ -31,9 +32,10 @@ try {
 
         # Iterate over each file
         Get-ChildItem -File $config.acknowledgementsJsonPath | ForEach-Object {
-            Add-LogEntry "Processing file $($_.FullName)..."
+            $file = $_;
+            Add-LogEntry "Processing file $($file.FullName)..."
             try {
-                $body = Get-Content -Raw -Path $_.FullName
+                $body = Get-Content -Raw -Path $file.FullName
                 $data = $body | ConvertFrom-Json
                 $url = "$($config.posAPIUri)edi/orders/$($data.orderId)/acknowledgements"
 
@@ -41,12 +43,14 @@ try {
                 if ($config.debug) { Add-LogEntry "Got result: $(ConvertTo-Json $result)" }
 
                 if ($test -eq $false) {
-                    $destination = [System.IO.Path]::Combine($config.acknowledgementsHistoryPath, $_.Name)
-                    Move-Item -Force -Path $_.FullName -Destination $destination
-                    Add-LogEntry "Moved $($_.Name) to $destination"
+                    $destination = [System.IO.Path]::Combine($config.acknowledgementsHistoryPath, $file.Name)
+                    Move-Item -Force -Path $file.FullName -Destination $destination
+                    Add-LogEntry "Moved $($file.Name) to $destination"
                 }
             }
             catch {
+                $destination = [System.IO.Path]::Combine($config.acknowledgementsFailedPath, $file.Name)
+                Move-Item -Force -Path $file.FullName -Destination $destination
                 Add-LogEntry "Failed to send order acknowledgement. $($_.Exception.Message)"
             }
         }
