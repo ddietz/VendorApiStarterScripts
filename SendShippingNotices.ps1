@@ -51,6 +51,9 @@ try {
             catch {
                 $destination = [System.IO.Path]::Combine($config.shippingNoticeFailedPath, $file.Name)
                 Move-Item -Force -Path $file.FullName -Destination $destination
+                $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
+                $errResp = $streamReader.ReadToEnd() | ConvertFrom-Json
+                $streamReader.Close()
                 Add-LogEntry "Failed to send shipping notice. $($_.Exception.Message)"
             }
         }

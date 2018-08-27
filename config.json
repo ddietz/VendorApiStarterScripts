@@ -1,8 +1,8 @@
 {
   "debug": true,
   "outputToConsole": true,
-  "clientId": "GeniusCentral-Test",
-  "clientSecret": "4F35C24A-32CD-43E3-B9E8-E2A7CE995945",
+  "clientId": "VendorClientTest",
+  "clientSecret": "4ACF3D7F-727E-4616-9B43-360D048DF505",
   "identityAPIUri": "https://idsrv.dev.geniuscentral.com/connect/token",
   "orderingAPIUri": "https://posapi.dev.geniuscentral.com/",
   "posAPIUri": "https://posapi.dev.geniuscentral.com/",

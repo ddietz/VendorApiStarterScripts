@@ -51,7 +51,10 @@ try {
             catch {
                 $destination = [System.IO.Path]::Combine($config.acknowledgementsFailedPath, $file.Name)
                 Move-Item -Force -Path $file.FullName -Destination $destination
-                Add-LogEntry "Failed to send order acknowledgement. $($_.Exception.Message)"
+                $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
+                $errResp = $streamReader.ReadToEnd() | ConvertFrom-Json
+                $streamReader.Close()
+                Add-LogEntry "Failed to send order acknowledgement. $($_.Exception.Message) $errResp"
             }
         }
     }
