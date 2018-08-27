@@ -1,0 +1,102 @@
+{
+	"OrderId": 18486843,
+	"InvoiceNumber": "1623125",
+	"PurchaseOrderNumber": "18339675",
+	"TrackingNumber": "1ZY840690341707139",
+	"BillOfLadingNumber": "2345",
+	"CarrierReferenceNumber": "3456",
+	"AccountNumber": "4567",
+	"Memo": "Invoice Level Memo",
+	"ItemCount": 3,
+	"ExtendedItemCount": 0,
+	"DateCreated": "2018-08-02T00:00:00-04:00",
+	"DateShipped": "2018-08-13T00:00:00-04:00",
+	"ContactInformation": {
+		"Name": "Testina McTesterson",
+		"Phone": "+1 515-551-2345",
+		"Email": "testina@mctesterson.test"
+	},
+	"ShipToContactInformation": {
+		"Name": "TEST RETAIL LOCATION #123",
+		"Address": {
+			"Address1": "123 TEST RD",
+			"City": "ORLANDO",
+			"PostalCode": "32819",
+			"State": "FL"
+		}
+	},
+	"RemitToContactInformation": {
+		"DunsNumber": "123456789ABCD",
+		"Name": "Testy McRemitterson",
+		"Address": {
+			"Address1": "123 Remittome St",
+			"Address2": "Ste 100",
+			"City": "Nowheresville",
+			"Country": "US",
+			"PostalCode": "00000",
+			"State": "ID"
+		}
+	},
+	"BillingTerms": {
+		"BasisDateCode": "1",
+		"NetDaysDue": 1,
+		"DiscountDaysDue": 2,
+		"Discount": 1.23,
+		"Description": "Billing terms"
+	},
+	"LineItems": [{
+			"QuantityInvoiced": 3,
+			"PriceAdjustments": [{
+					"AllowanceOrChargeIndicator": "A",
+					"AllowanceOrChargeTypeCode": "C310",
+					"DollarAmount": 3.69,
+					"PercentAmount": 0.1,
+					"HandlingMethodCode": "01",
+					"Description": "Credit"
+				}
+			],
+			"QuantityShipped": 2,
+			"QuantityOrdered": 0,
+			"UnitPrice": 12.3,
+			"Sku": "1234",
+			"Upc": "00002107800240",
+			"LineNumber": 1,
+			"UnitOfMeasure": "EA",
+			"Description": "GABA 750MG TABS 90T"
+		}, {
+			"QuantityInvoiced": 3,
+			"QuantityShipped": 3,
+			"QuantityOrdered": 0,
+			"UnitPrice": 81.09,
+			"Sku": "1623",
+			"Upc": "00002107800623",
+			"LineNumber": 2,
+			"UnitOfMeasure": "CS",
+			"Description": "DMAE TABS 351MG 100T"
+		}, {
+			"QuantityInvoiced": 3,
+			"QuantityShipped": 3,
+			"QuantityOrdered": 0,
+			"UnitPrice": 5.99,
+			"Upc": "00002107802785",
+			"LineNumber": 3,
+			"UnitOfMeasure": "EA",
+			"Description": "#NIGHTWELL 2 OZ"
+		}
+	],
+	"Pricing": {
+		"AdditionalDiscount": 1.23,
+		"GrossTotal": 55.42,
+		"NetTotal": 0.00,
+		"Taxes": 3.88
+	},
+	"PriceAdjustments": [{
+			"AllowanceOrChargeIndicator": "C",
+			"AllowanceOrChargeTypeCode": "H750",
+			"DollarAmount": 3.88,
+			"PercentAmount": 0.07,
+			"HandlingMethodCode": "06",
+			"Description": "Sales Tax"
+		}
+	]
+}

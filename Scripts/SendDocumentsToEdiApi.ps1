@@ -61,7 +61,7 @@ try {
                 $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
                 $errResp = $streamReader.ReadToEnd() | ConvertFrom-Json
                 $streamReader.Close()
-                Add-LogEntry "Failed to $readableName. $($_.Exception.Message)"
+                Add-LogEntry "Failed to $readableName. $($_.Exception.Message) $errResp"
             }
         }
     }
