@@ -44,7 +44,7 @@ try {
             try {
                 $body = Get-Content -Raw -Path $file.FullName
                 $data = $body | ConvertFrom-Json
-                $url = "$($config.posAPIUri)edi/orders/$($data.orderId)/$ediApiEndpoint"
+                $url = "$($config.posAPIUri)orders/$($data.orderId)/$ediApiEndpoint"
 
                 $result = Invoke-RestMethod -Method Post -Uri $url -Body $body -Headers $headers
                 if ($config.debug) { Add-LogEntry "Got result: $(ConvertTo-Json $result)" }
