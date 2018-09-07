@@ -29,7 +29,7 @@ try {
 
     #Get Orders From API
     Try{
-        $uri = "$($config.posAPIUri)orders/$($orderId)/receipts"
+        $uri = "$($config.posAPIUri)purchase-orders/$($orderId)/receipts"
         $message = "Accessing API: " + $uri
         Add-LogEntry $message
 
