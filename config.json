@@ -15,5 +15,7 @@
   "shippingNoticeFailedPath": "Samples\\ShippingNotices\\Failed",
   "invoiceJsonPath": "Samples\\Invoices",
   "invoiceHistoryPath": "Samples\\Invoices\\History",
-  "invoiceFailedPath": "Samples\\Invoices\\Failed"
+  "invoiceFailedPath": "Samples\\Invoices\\Failed",
+  "purchaseOrdersUnconfirmedPath": "Samples\\PurchaseOrders\\Unconfirmed",
+  "purchaseOrdersConfirmedPath": "Samples\\PurchaseOrders\\Confirmed"
 }
