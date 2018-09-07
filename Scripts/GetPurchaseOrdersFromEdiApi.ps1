@@ -11,10 +11,12 @@ $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
 
 # Create simplified variables
 $unconfirmedPath = $config.$($configPrefix + "UnconfirmedPath")
+$confirmedPath = $config.$($configPrefix + "ConfirmedPath")
 
 # Create folders if they do not exist
 If(!(Test-Path $config.logFile)) { New-Item $config.logFile -type directory }
 If(!(Test-Path $unconfirmedPath)) { New-Item $unconfirmedPath -type directory }
+If(!(Test-Path $confirmedPath)) { New-Item $confirmedPath -type directory }
 
 # Simplified logging
 function Add-LogEntry([string]$message) {
@@ -48,9 +50,19 @@ try {
             ForEach ($order In $result.items){
                 $fileName = 
                 $pathFile = $unconfirmedPath + "\" + $order.orderId + ".json"
+                $confirmedPathFile = $confirmedPath + "\" + $order.orderId + ".json"
                 $message = "Saving Order in JSON format $($pathFile)" 
                 Add-LogEntry $message
                 $order | ConvertTo-Json | Out-File $pathFile -ErrorAction Stop
+                .\scripts\ConfirmPurchaseOrderReceipt.ps1 `
+                    -configPrefix "purchaseOrders" `
+                    -logPrefix "GetPurchaseOrdersLog_" `
+                    -readableName "confirm purchase orders" `
+                    -orderId $order.orderId `
+                    -unconfirmedPathFile $pathFile `
+                    -confirmedPathFile $confirmedPathFile `
+                    -accessToken $accessToken `
+                    -test $test `
             }
 
             #this would display the orders to the console
