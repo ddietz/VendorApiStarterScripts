@@ -1,40 +1,48 @@
 {
-    "orderId": -1,
-    "memo": "PowerShell Sample Order Acknowledgement",
+	"orderId": 17511380,
     "accountNumber": "1236GD",
     "internalVendorNumber": "12345",
-    "hasAcceptedAsIs": true,
+	"hasAcceptedAsIs": true,
     "hasRejectedAsIs": false,
+    "memo": "PowerShell Sample Order Acknowledgement",
+    "storeId": 12345,
+    "vendorId": 12356,
     "itemCount": 12,
     "purchaseOrderNumber": "123456767",
     "dateOrdered": "2018-07-28T17:08:45.138Z",
-    "billingTerms": [
-      {
-        "basisDateCode": "3",
-        "netDaysDue": 30,
-        "discountDaysDue": 15,
-        "discount": 10,
-        "description": "10% off for 15 days"
-      }
+	"billingTerms": [
+		{
+			"basisDateCode": "3",
+			"description": "10% off for 15 days",
+			"discountAmount": 10,
+			"discountDaysDue": 15,
+			"discountDueDate": "2018-10-01T18:36:46.299Z",
+			"discountPercent": 0,
+			"netDaysDue": 30,
+			"netDueDate": "2018-10-01T18:36:46.299Z"
+		}
     ],
     "carrier": {
       "identificationCode": "FedEx",
       "routing": "123456700"
     },
-    "contactInformation": {
-      "name": "First Last",
-      "phone": "7271234567",
-      "email": "first.last@testco.test",
-      "address": {
-        "address1": "1234 Main st",
-        "address2": "Ste 123",
-        "city": "Citysville",
-        "country": "US",
-        "postalCode": "12345",
-        "state": "CO"
-      }
-    },
-    "lineItems": [
+	"contactInformation": [
+		{
+		  "companyName": "Company Name",
+		  "name": "First Last",
+		  "phone": "7271234567",
+		  "email": "first.last@testco.test",
+		  "address": {
+			"address1": "1234 Main st",
+			"address2": "Ste 123",
+			"city": "Citysville",
+			"country": "US",
+			"postalCode": "12345",
+			"state": "CO"
+		  }
+		}
+	],
+	"lineItems": [
       {
         "isRejected": false,
         "unitOfMeasure": "EA",
@@ -57,18 +65,6 @@
         "sku": "12345",
         "upc": "123456789012",
         "lineNumber": "1"
-      },
-      {
-        "isRejected": false,
-        "unitOfMeasure": "EA",
-        "casePackSize": 1,
-        "quantityOrdered": 11,
-        "quantityAcknowledged": 11,
-        "description": "sample description 2",
-        "unitPrice": 1.23,
-        "sku": "12346",
-        "upc": "123456789013",
-        "lineNumber": "2"
       },
       {
         "isRejected": true,
@@ -106,12 +102,10 @@
         "upc": "123456789016",
         "lineNumber": "5"
       }
-    ],
-    "storeId": 12345,
-    "transitDetails": {
+	],
+	"transitDetails": {
       "deliveryDate": "2018-07-25T19:03:00.326Z",
       "pickupDate": null,
       "shipmentDate": "2018-07-20T19:03:00.326Z"
-    },
-    "vendorId": 12356
-  }
+	}
+}
