@@ -1,6 +1,7 @@
 Param(
   [string]$configPrefix,
   [string]$ediApiEndpoint,
+  [string]$ediApiEndpointPrefix = "orders",
   [string]$logPrefix,
   [string]$readableName,
   [bool]$test = $false
@@ -44,7 +45,9 @@ try {
             try {
                 $body = Get-Content -Raw -Path $file.FullName
                 $data = $body | ConvertFrom-Json
-                $url = "$($config.posAPIUri)orders/$($data.orderId)/$ediApiEndpoint"
+                $url = "$($config.posAPIUri)$ediApiEndpointPrefix/$($data.orderId)/$ediApiEndpoint"
+
+                Add-LogEntry "URL: $url"
 
                 $result = Invoke-RestMethod -Method Post -Uri $url -Body $body -Headers $headers
                 if ($config.debug) { Add-LogEntry "Got result: $(ConvertTo-Json $result)" }
@@ -57,7 +60,9 @@ try {
             }
             catch {
                 $destination = [System.IO.Path]::Combine($failedPath, $file.Name)
-                Move-Item -Force -Path $file.FullName -Destination $destination
+                if ($test -eq $false) {
+                    Move-Item -Force -Path $file.FullName -Destination $destination
+                }
                 $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
                 $errResp = $streamReader.ReadToEnd() | ConvertFrom-Json
                 $streamReader.Close()
