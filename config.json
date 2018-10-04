@@ -16,6 +16,9 @@
   "invoiceJsonPath": "Samples\\Invoices",
   "invoiceHistoryPath": "Samples\\Invoices\\History",
   "invoiceFailedPath": "Samples\\Invoices\\Failed",
+  "creditMemoJsonPath": "Samples\\CreditMemos",
+  "creditMemoHistoryPath": "Samples\\CreditMemos\\History",
+  "creditMemoFailedPath": "Samples\\CreditMemos\\Failed",
   "purchaseOrdersUnconfirmedPath": "Samples\\PurchaseOrders\\Unconfirmed",
   "purchaseOrdersConfirmedPath": "Samples\\PurchaseOrders\\Confirmed"
 }

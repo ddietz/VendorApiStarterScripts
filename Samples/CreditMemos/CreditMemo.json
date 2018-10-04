@@ -1,0 +1,113 @@
+{
+    "orderId": 17511380,
+    "sender": "buyer",
+    "creditAdjustmentNumber": "123546",
+    "lettersOrNotes": "Sample letters or notes",
+    "originalReturnRequestNumber": "123546",
+    "promotionDealNumber": "123546",
+    "geniusCentral": {
+        "buyerId": 141645,
+        "buyer": "Sample Buyer",
+        "vendorId": 3694
+    },
+    "vendor": {
+        "accountNumber": "1278",
+        "invoiceNumber": "123546"
+    },
+    "buyer": {
+        "purchaseOrderNumber": "{{$timestamp}}",
+        "departmentNumber": "Doughtnuts",
+        "vendorNumber": "DEVVENDOR",
+        "storeNumber": "18"
+    },
+    "dateCreated": "2018-09-18T17:14:07.522Z",
+    "dateOrdered": "2018-09-18T17:14:07.522Z",
+    "dateInvoiced": "2018-09-18T17:14:07.522Z",
+    "handlingAction": "deductFromNextRemittance",
+    "creditAdjustmentType": "marketDevelopmentFund",
+    "purchaseOrderNumber": "123456789",
+    "invoiceNumber": "123546",
+    "amount": 12.34,
+    "isCredit": true,
+    "adminContact": {
+        "address": {
+            "address1": "1234 Smith Street",
+            "address2": "Suite 100",
+            "city": "Filly",
+            "country": "USA",
+            "postalCode": "23837",
+            "state": "PA"
+        },
+        "email": "blah@blah.com",
+        "name": "Smithy Joe",
+        "phone": "727-349-3493"
+    },
+    "allowances": [
+        {
+            "type": "advertisingAllowance",
+            "dollarAmount": 1,
+            "percentAmount": 0,
+            "description": "sample description"
+        }
+    ],
+    "charges": [
+        {
+            "type": "freight",
+            "dollarAmount": 1,
+            "percentAmount": 0,
+            "description": "sample description 2"
+        }
+    ],
+    "reportingLocation": {
+        "address": {
+            "address1": "1234 Main Ave",
+            "address2": "Suite N",
+            "city": "Coltsville",
+            "country": "USA",
+            "postalCode": "56545",
+            "state": "CT"
+        },
+        "buyerAssignedCode": null,
+        "dunsNumber": "123456789",
+        "email": "charm@galloping-speed.com",
+        "name": "Charlie Mustang",
+        "phone": "727-349-9838"
+    },
+    "lineItems": [
+        {
+            "adjustmentReason": "pricingError",
+            "isCredit": true,
+            "amount": 1,
+            "quantityAdjusted": 4,
+            "priceDifferenceAmount": 1,
+            "lettersOrNotes": "not telling",
+            "originalReturnRequestNumber": "123546",
+            "promotionDealNumber": "123546",
+            "allowances": [
+                {
+                    "type": "advertisingAllowance",
+                    "dollarAmount": 1,
+                    "percentAmount": 0,
+                    "description": "sample description 3"
+                }
+            ],
+            "charges": [
+                {
+                    "type": "freight",
+                    "dollarAmount": 1,
+                    "percentAmount": 0,
+                    "description": "sample description 4"
+                }
+            ],
+            "sku": "ABC123",
+            "upc": "123456789012",
+            "gtin": "12345678901234",
+            "unitPrice": 3.45,
+            "description": "string",
+            "casePackSize": 0,
+            "lineNumber": "1",
+            "unitOfMeasure": "CS",
+            "quantityOrdered": 1
+        }
+    ]
+}
