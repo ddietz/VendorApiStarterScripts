@@ -45,7 +45,14 @@ try {
             try {
                 $body = Get-Content -Raw -Path $file.FullName
                 $data = $body | ConvertFrom-Json
-                $url = "$($config.posAPIUri)$ediApiEndpointPrefix/$($data.orderId)/$ediApiEndpoint"
+
+                if($ediApiEndpointPrefix -eq "purchase-orders"){
+                    $entityId = $data.purchaseOrderNumber;
+                } else {
+                    $entityId = $data.orderId;
+                }
+
+                $url = "$($config.posAPIUri)$ediApiEndpointPrefix/$($entityId)/$ediApiEndpoint"
 
                 Add-LogEntry "URL: $url"
 

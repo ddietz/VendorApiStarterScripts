@@ -1,5 +1,4 @@
 {
-    "orderId": 17511380,
     "sender": "buyer",
     "creditAdjustmentNumber": "123546",
     "lettersOrNotes": "Sample letters or notes",
@@ -25,7 +24,7 @@
     "dateInvoiced": "2018-09-18T17:14:07.522Z",
     "handlingAction": "deductFromNextRemittance",
     "creditAdjustmentType": "marketDevelopmentFund",
-    "purchaseOrderNumber": "123456789",
+    "purchaseOrderNumber": "17511380",
     "invoiceNumber": "123546",
     "amount": 12.34,
     "isCredit": true,
