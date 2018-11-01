@@ -1,5 +1,6 @@
 Param(
-  [bool]$test = $False
+  [bool]$test = $False,
+  [int]$orderId = -1
 )
 
 Clear-Host
@@ -10,4 +11,5 @@ Clear-Host
     -logPrefix "SendCreditMemosLog_" `
     -readableName "send credit memos" `
     -ediApiEndpointPrefix "purchase-orders" `
+    -orderId $orderId `
     -test $test

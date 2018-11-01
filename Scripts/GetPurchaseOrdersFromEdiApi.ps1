@@ -46,9 +46,17 @@ try {
             $message = "Number of orders retrieved - " + $result.items.length
             Add-LogEntry $message
 
+            $firstOrder = $true;
             #Save each order to disk to the Unconfirmed Path
             ForEach ($order In $result.items){
-                $fileName = 
+
+                #When testing, remember the first orderId in global scope
+                if ($firstOrder -eq $true -And $test -eq $true) {
+                    $global:orderIdForTest = $order.orderId;
+                    Add-LogEntry "Set global:orderIdForTest to $global:orderIdForTest"
+                    $firstOrder = $false;
+                }
+
                 $pathFile = $unconfirmedPath + "\" + $order.orderId + ".json"
                 $confirmedPathFile = $confirmedPath + "\" + $order.orderId + ".json"
                 $message = "Saving Order in JSON format $($pathFile)" 
