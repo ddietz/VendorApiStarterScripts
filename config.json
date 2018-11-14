@@ -20,5 +20,8 @@
   "creditMemoHistoryPath": "Samples\\CreditMemos\\History",
   "creditMemoFailedPath": "Samples\\CreditMemos\\Failed",
   "purchaseOrdersUnconfirmedPath": "Samples\\PurchaseOrders\\Unconfirmed",
-  "purchaseOrdersConfirmedPath": "Samples\\PurchaseOrders\\Confirmed"
+  "purchaseOrdersConfirmedPath": "Samples\\PurchaseOrders\\Confirmed",
+  "purchaseOrderChangeJsonPath": "Samples\\PurchaseOrderChange",
+  "purchaseOrderChangeHistoryPath": "Samples\\PurchaseOrderChange\\History",
+  "purchaseOrderChangeFailedPath": "Samples\\PurchaseOrderChange\\Failed"
 }

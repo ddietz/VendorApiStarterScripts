@@ -52,7 +52,7 @@ try {
                     Add-LogEntry "EntityId source (1) orderId param: $entityId"
                 }
                 elseif($ediApiEndpointPrefix -eq "purchase-orders"){
-                    $entityId = $data.purchaseOrderNumber;
+                    $entityId = $data.buyer.purchaseOrderNumber;
                     Add-LogEntry "EntityId source (2) data file purchaseOrderNumber: $entityId"
                 } else {
                     $entityId = $data.orderId;
