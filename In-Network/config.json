@@ -1,0 +1,13 @@
+{
+  "debug": true,
+  "outputToConsole": true,
+  "clientId": "VendorClientTest",
+  "clientSecret": "4ACF3D7F-727E-4616-9B43-360D048DF505",
+  "identityAPIUri": "https://idsrv.dev.geniuscentral.com/connect/token",
+  "orderingAPIUri": "https://posapi.dev.geniuscentral.com/",
+  "posAPIUri": "https://posapi.dev.geniuscentral.com/",
+  "logFile": "LogFiles\\",
+  "ordersGetCount": "2",
+  "ordersUnconfirmedPath": "Samples\\orders\\Unconfirmed",
+  "ordersConfirmedPath": "Samples\\orders\\Confirmed"
+}
