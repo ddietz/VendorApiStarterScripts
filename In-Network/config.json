@@ -16,5 +16,9 @@
 
   "invoiceJsonPath": "Samples\\Invoices",
   "invoiceHistoryPath": "Samples\\Invoices\\History",
-  "invoiceFailedPath": "Samples\\Invoices\\Failed"
+  "invoiceFailedPath": "Samples\\Invoices\\Failed",
+
+  "shippingNoticeJsonPath": "Samples\\ShippingNotices",
+  "shippingNoticeHistoryPath": "Samples\\ShippingNotices\\History",
+  "shippingNoticeFailedPath": "Samples\\ShippingNotices\\Failed"
 }
