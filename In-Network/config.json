@@ -6,8 +6,15 @@
   "identityAPIUri": "https://idsrv.dev.geniuscentral.com/connect/token",
   "orderingAPIUri": "https://posapi.dev.geniuscentral.com/",
   "posAPIUri": "https://posapi.dev.geniuscentral.com/",
+
   "logFile": "LogFiles\\",
+
   "ordersGetCount": "2",
+
   "ordersUnconfirmedPath": "Samples\\orders\\Unconfirmed",
-  "ordersConfirmedPath": "Samples\\orders\\Confirmed"
+  "ordersConfirmedPath": "Samples\\orders\\Confirmed",
+
+  "invoiceJsonPath": "Samples\\Invoices",
+  "invoiceHistoryPath": "Samples\\Invoices\\History",
+  "invoiceFailedPath": "Samples\\Invoices\\Failed"
 }

@@ -1,0 +1,32 @@
+{
+	"header": {
+		"orderID": 6672725,
+		"invoiceNumber": "9999",
+		"shipDate": "2018-12-21T00:00:00",
+		"invoiceDate": "2018-12-20T00:00:00",
+		"subTotal": 8,
+		"discount": 2.99,
+		"tax": 0,
+		"freight": 5,
+		"orderTotal": 12
+	},
+	"details": [
+		{
+			"gtin": "00000002256755",
+			"supplierSKU": "2256",
+			"itemDescription": "Glen's Apple Cider 16 oz",
+			"shippedQuantity": 1,
+			"orderQuantity": 1,
+			"priceEa": 8,
+			"priceCase": 0,
+			"srp": 6.99,
+			"wholesale": 9.99,
+			"priceExtension": 8,
+			"brandDescription": "Glenville Mangos Market",
+			"packSize": "16 oz",
+			"discountDesc": null,
+			"orderUnits": "EA",
+			"casePackSize": 16
+		}
+	]
+}
