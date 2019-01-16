@@ -39,7 +39,7 @@ try {
 
         #Get Orders From API
         Try{
-            $uri = "$($config.posAPIUri)$($posApiEndpoint)?confirmed=false&count=$($ordersGetCount)"
+            $uri = "$($config.posAPIUri)$($posApiEndpoint)?pending=true&count=$($ordersGetCount)"
             $message = "Accessing API: " + $uri
             Add-LogEntry $message
 
