@@ -13,6 +13,7 @@ $config = Get-Content -Raw -Path "config.json" | ConvertFrom-Json
 $unconfirmedPath = $config.$($configPrefix + "UnconfirmedPath")
 $confirmedPath = $config.$($configPrefix + "ConfirmedPath")
 $ordersGetCount = $config.$($configPrefix + "GetCount")
+$ordersGetPending = $config.$($configPrefix + "GetPending")
 
 # Create folders if they do not exist
 If(!(Test-Path $config.logFile)) { New-Item $config.logFile -type directory }
@@ -39,7 +40,7 @@ try {
 
         #Get Orders From API
         Try{
-            $uri = "$($config.posAPIUri)$($posApiEndpoint)?pending=true&count=$($ordersGetCount)"
+            $uri = "$($config.posAPIUri)$($posApiEndpoint)?pending=$($ordersGetPending)&count=$($ordersGetCount)"
             $message = "Accessing API: " + $uri
             Add-LogEntry $message
 
@@ -55,22 +56,28 @@ try {
 
             #Save each order to disk to the Unconfirmed Path
             ForEach ($order In $result.items){
-                $pathFile = $unconfirmedPath + "\" + $order.header.orderId + ".json"
+                $unconfirmedPathFile = $unconfirmedPath + "\" + $order.header.orderId + ".json"
                 $confirmedPathFile = $confirmedPath + "\" + $order.header.orderId + ".json"
-                $message = "Saving Order in JSON format $($pathFile)"
-                Add-LogEntry $message
-                $order | ConvertTo-Json | Out-File $pathFile -ErrorAction Stop
-                .\scripts\ConfirmOrderReceipt.ps1 `
-                    -configPrefix "orders" `
-                    -logPrefix "GetInNetworkOrdersLog_" `
-                    -readableName "confirm in-network orders" `
-                    -orderId $order.header.orderId `
-                    -unconfirmedPathFile $pathFile `
-                    -confirmedPathFile $confirmedPathFile `
-                    -accessToken $accessToken `
-                    -test $test `
+                if($ordersGetPending){
+                    $message = "Saving Order in JSON format $($unconfirmedPathFile)"
+                    Add-LogEntry $message
+                        $order | ConvertTo-Json | Out-File $unconfirmedPathFile -ErrorAction Stop
+                    .\scripts\ConfirmOrderReceipt.ps1 `
+                        -configPrefix "orders" `
+                        -logPrefix "GetInNetworkOrdersLog_" `
+                        -readableName "confirm in-network orders" `
+                        -orderId $order.header.orderId `
+                        -unconfirmedPathFile $unconfirmedPathFile `
+                        -confirmedPathFile $confirmedPathFile `
+                        -accessToken $accessToken `
+                        -test $test `
+                }
+                else{
+                    $message = "Saving Order in JSON format $($confirmedPathFile)"
+                    Add-LogEntry $message
+                        $order | ConvertTo-Json | Out-File $confirmedPathFile -ErrorAction Stop
+                }
             }
-
             #this would display the orders to the console
             #Return $result.items
         }

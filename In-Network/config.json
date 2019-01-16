@@ -10,6 +10,7 @@
   "logFile": "LogFiles\\",
 
   "ordersGetCount": "2",
+  "ordersGetPending": true,
 
   "ordersUnconfirmedPath": "Samples\\orders\\Unconfirmed",
   "ordersConfirmedPath": "Samples\\orders\\Confirmed",
