@@ -73,14 +73,17 @@ try {
                 }
             }
             catch {
+                Add-LogEntry "Failed to $readableName. $($_.Exception.Message)"
                 $destination = [System.IO.Path]::Combine($failedPath, $file.Name)
                 if ($test -eq $false) {
                     Move-Item -Force -Path $file.FullName -Destination $destination
                 }
-                $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
-                $errResp = $streamReader.ReadToEnd() | ConvertFrom-Json
-                $streamReader.Close()
-                Add-LogEntry "Failed to $readableName. $($_.Exception.Message) $errResp"
+                if($_.Exception.Response){
+                    $streamReader = [System.IO.StreamReader]::new($_.Exception.Response.GetResponseStream())
+                    $errResp = $streamReader.ReadToEnd() | ConvertFrom-Json
+                    $streamReader.Close()
+                    Add-LogEntry "Failure Response Stream $errResp"
+                }
             }
         }
     }
