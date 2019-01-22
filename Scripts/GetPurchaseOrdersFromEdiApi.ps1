@@ -54,16 +54,17 @@ try {
 
             #Save each order to disk to the Unconfirmed Path
             ForEach ($order In $result.items){
-                $pathFile = $unconfirmedPath + "\" + $order.orderId + ".json"
-                $confirmedPathFile = $confirmedPath + "\" + $order.orderId + ".json"
-                $message = "Saving Order in JSON format $($pathFile)" 
+                $orderId = $order.geniusCentral.documentId
+                $pathFile = $unconfirmedPath + "\$($orderId).json"
+                $confirmedPathFile = $confirmedPath + "\$($orderId).json"
+                $message = "Saving Order $($orderId) in JSON format $($pathFile)"
                 Add-LogEntry $message
                 $order | ConvertTo-Json | Out-File $pathFile -ErrorAction Stop
                 .\scripts\ConfirmPurchaseOrderReceipt.ps1 `
                     -configPrefix "purchaseOrders" `
                     -logPrefix "GetPurchaseOrdersLog_" `
                     -readableName "confirm purchase orders" `
-                    -orderId $order.orderId `
+                    -orderId $orderId `
                     -unconfirmedPathFile $pathFile `
                     -confirmedPathFile $confirmedPathFile `
                     -accessToken $accessToken `

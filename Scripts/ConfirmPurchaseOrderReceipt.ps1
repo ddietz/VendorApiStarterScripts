@@ -24,7 +24,7 @@ Add-LogEntry "Start of $readableName script - $(Get-Date -Format ""u"")"
 
 # Confirm the purchase order
 try {
-    $message = "Confirming purchase order: $($orderJsonPath)"
+    $message = "Confirming purchase order: $($unconfirmedPathFile)"
     Add-LogEntry $message
 
     #Get Orders From API
