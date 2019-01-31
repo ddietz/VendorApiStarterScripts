@@ -1,0 +1,144 @@
+{
+    "geniusCentral": {
+        "documentId": 0,
+        "buyerId": 0,
+        "buyerName": null,
+        "vendorId": 0,
+        "version": 2,
+        "ediDocumentFileName": null,
+        "uniqueKey": null
+    },
+    "vendor": {
+        "accountNumber": "123456788",
+        "invoiceNumber": "123546",
+        "trackingNumber": "1K394SDKFG93K349",
+        "billOfLadingNumber": "1234567",
+        "carrierReferenceNumber": "123464637"
+    },
+    "buyer": {
+        "purchaseOrderNumber": "123456789",
+        "vendorNumber": "12345676",
+        "storeNumber": null
+    },
+    "dateOrdered": "0001-01-01T00:00:00",
+    "dateShipped": "2018-07-27T20:31:27.34Z",
+    "dateInvoiced": "2019-01-31T16:35:28.0002082-05:00",
+    "adminContact": {
+        "companyName": null,
+        "name": "Horsey McHorse-Face",
+        "phone": "727-349-3493",
+        "email": "blah@blah.com",
+        "address": {
+            "address1": "1234 Horsey Street",
+            "address2": "Suite 100",
+            "city": "Filly",
+            "state": "PA",
+            "country": "USA",
+            "postalCode": "23837"
+        }
+    },
+    "remitTo": {
+        "dunsNumber": "123456789",
+        "buyerAssignedCode": null,
+        "companyName": null,
+        "name": "Charlie Mustang",
+        "phone": "727-349-9838",
+        "email": "charm@galloping-speed.com",
+        "address": {
+            "address1": "1234 Horsey Ave",
+            "address2": "Suite N",
+            "city": "Coltsville",
+            "state": "CT",
+            "country": "USA",
+            "postalCode": "56545"
+        }
+    },
+    "shipTo": {
+        "dunsNumber": null,
+        "buyerAssignedCode": "HN1234",
+        "companyName": null,
+        "name": "Horsey McHorse-Face",
+        "phone": "727-349-3493",
+        "email": "blah@blah.com",
+        "address": {
+            "address1": "1234 Horsey Street",
+            "address2": "Suite 100",
+            "city": "Filly",
+            "state": "PA",
+            "country": "USA",
+            "postalCode": "23837"
+        }
+    },
+    "billingTerms": {
+        "dueDateBasis": "invoiceDate",
+        "netDaysDue": 30,
+        "netDueDate": null,
+        "discountDaysDue": 10,
+        "discountDueDate": null,
+        "discountAmount": 0,
+        "discountPercent": 10,
+        "description": "10% at 10 days"
+    },
+    "memo": "Oh look, a horsey. Neigh neigh neigh.",
+    "lineItems": [
+        {
+            "quantityInvoiced": 25,
+            "quantityShipped": 25,
+            "memo": "neigh neigh neigh",
+            "allowances": null,
+            "charges": null,
+            "taxes": [
+                {
+                    "type": "beverageTax",
+                    "amount": 1.23
+                }
+            ],
+            "lineNumber": "1",
+            "sku": "NEI123",
+            "upc": "123456789012",
+            "gtin": null,
+            "description": "Horse socks",
+            "casePackSize": null,
+            "unitPrice": 2.5,
+            "unitOfMeasure": null,
+            "quantityOrdered": 25
+        },
+        {
+            "quantityInvoiced": 25,
+            "quantityShipped": 0,
+            "memo": "NEIGH!",
+            "allowances": [
+                {
+                    "type": "discount",
+                    "handlingMethod": "offInvoice",
+                    "dollarAmount": 0.25,
+                    "percentAmount": 10,
+                    "description": "Equine discount"
+                }
+            ],
+            "charges": null,
+            "taxes": null,
+            "lineNumber": "2",
+            "sku": "HS1234",
+            "upc": "123456789013",
+            "gtin": null,
+            "description": "Horse shoes",
+            "casePackSize": null,
+            "unitPrice": 3.5,
+            "unitOfMeasure": null,
+            "quantityOrdered": 25
+        }
+    ],
+    "carrier": {
+        "standardCarrierAlphaCode": null,
+        "name": null
+    },
+    "allowances": null,
+    "charges": null,
+    "pricing": {
+        "additionalDiscount": 0,
+        "grossTotal": 50,
+        "netTotal": 50,
+        "taxes": 0
+    }
+}

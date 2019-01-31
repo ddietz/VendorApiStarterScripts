@@ -1,5 +1,6 @@
 Param(
-  [bool]$test = $False
+  [bool]$test = $False,
+  [int]$orderId = -1
 )
 
 Clear-Host
@@ -9,4 +10,5 @@ Clear-Host
     -ediApiEndpoint "invoices" `
     -logPrefix "SendInvoicesLog_" `
     -readableName "send invoices" `
+    -orderId $orderId `
     -test $test

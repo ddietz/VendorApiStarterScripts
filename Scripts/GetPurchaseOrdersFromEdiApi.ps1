@@ -46,12 +46,6 @@ try {
             $message = "Number of orders retrieved - " + $result.items.length
             Add-LogEntry $message
 
-            #When testing, remember the first orderId in global scope
-            if ($test -eq $true -And $result.items.length -gt 0){
-                $global:orderIdForTest = $result.items[0].orderId;
-                Add-LogEntry "Set global:orderIdForTest to $global:orderIdForTest"
-            }
-
             #Save each order to disk to the Unconfirmed Path
             ForEach ($order In $result.items){
                 $orderId = $order.geniusCentral.documentId
