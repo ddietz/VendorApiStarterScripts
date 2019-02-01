@@ -2,8 +2,6 @@ Param(
   [bool]$test = $False
 )
 
-Clear-Host
-
 .\scripts\SendDocumentsToEdiApi.ps1 `
     -configPrefix "shippingNotice" `
     -ediApiEndpoint "shipping-notices" `

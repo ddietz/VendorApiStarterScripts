@@ -2,8 +2,6 @@ Param(
   [bool]$test = $False
 )
 
-Clear-Host
-
 .\scripts\GetInNetworkOrdersFromPosApi.ps1 `
     -configPrefix "orders" `
     -posApiEndpoint "in-network/orders" `

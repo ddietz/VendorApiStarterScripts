@@ -32,6 +32,8 @@ function Add-LogEntry([string]$message) {
 $logFile = "$($config.logFile)$logPrefix$(Get-Date -Format ""yyyy-MM-dd"").txt"
 Add-LogEntry "Start of $readableName script - $(Get-Date -Format ""u"")"
 
+Add-LogEntry "orderId [$($orderId)] test [$($test)] ediApiEndpoint [$($ediApiEndpoint)]"
+
 # Read in documents
 try {
     $accessToken = .\scripts\GetAccessToken.ps1 $config.clientSecret $config.identityAPIUri  $config.clientId $logFile $config.debug

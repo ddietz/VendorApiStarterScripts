@@ -3,8 +3,6 @@ Param(
   [int]$orderId = -1
 )
 
-Clear-Host
-
 .\scripts\SendDocumentsToEdiApi.ps1 `
     -configPrefix "purchaseOrderChange" `
     -ediApiEndpoint "changes" `
