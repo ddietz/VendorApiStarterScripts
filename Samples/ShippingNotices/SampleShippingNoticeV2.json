@@ -1,0 +1,115 @@
+{
+    "orderId": 17511380,
+    "geniusCentral": {
+        "documentId": 0,
+        "buyerId": 0,
+        "buyerName": null,
+        "vendorId": 0,
+        "version": 2,
+        "ediDocumentFileName": null,
+        "uniqueKey": null
+    },
+    "vendor": {
+        "shipmentId": "12345678934857346",
+        "trackingNumber": "1235",
+        "billOfLadingNumber": "12365",
+        "carrierReferenceNumber": "1234"
+    },
+    "buyer": {
+        "storeNumber": null,
+        "vendorNumber": "12365123"
+    },
+    "dateNotified": "2019-01-29T16:39:50.117",
+    "dateOrdered": "2018-07-28T17:08:45.138Z",
+    "packages": [
+        {
+            "packagingMaterial": "carton",
+            "quantity": 3,
+            "grossWeight": 123,
+            "unitOfMeasure": "LB"
+        }
+    ],
+    "carrier": {
+        "standardCarrierAlphaCode": "UPS",
+        "name": "1K4K3J4F3IF345346J"
+    },
+    "adminContact": {
+        "companyName": null,
+        "name": null,
+        "phone": null,
+        "email": null,
+        "address": null
+    },
+    "transitDetails": {
+        "deliveryDate": "2018-07-25T17:16:59.519Z",
+        "pickupDate": null,
+        "shipmentDate": "2018-07-25T17:16:59.519Z"
+    },
+    "shipFrom": {
+        "dunsNumber": "12345678901234",
+        "buyerAssignedCode": "123563",
+        "companyName": null,
+        "name": "Joney McStupidson",
+        "phone": "727-345-2395",
+        "email": "blah@blah.com",
+        "address": {
+            "address1": "1234 Horsey Street",
+            "address2": "Suite 100",
+            "city": "Ponyville",
+            "state": "MT",
+            "country": "USA",
+            "postalCode": "23837"
+        }
+    },
+    "shipTo": {
+        "dunsNumber": "12345678901234",
+        "buyerAssignedCode": "123563",
+        "companyName": null,
+        "name": "Joney McStupidson",
+        "phone": "727-345-2395",
+        "email": "blah@blah.com",
+        "address": {
+            "address1": "1234 Horsey Street",
+            "address2": "Suite 100",
+            "city": "Ponyville",
+            "state": "MT",
+            "country": "USA",
+            "postalCode": "23837"
+        }
+    },
+    "orders": [
+        {
+            "purchaseOrderNumber": "123456767",
+            "accountNumber": "TEST1234",
+            "shippingContainers": [
+                {
+                    "shippingContainerCodes": [
+                        "12345"
+                    ],
+                    "lineItems": [
+                        {
+                            "quantityShipped": 0,
+                            "additionalDescriptions": [
+                                "oh look a doggie 16oz",
+                                "delicious yum-yums"
+                            ],
+                            "lotNumber": "ABCD1234",
+                            "expirationDate": null,
+                            "productionDate": null,
+                            "bestByDate": null,
+                            "lineNumber": "1",
+                            "sku": "ABC1234",
+                            "upc": "123456789012",
+                            "gtin": null,
+                            "description": "blah blah who cares cornmeal",
+                            "casePackSize": null,
+                            "unitPrice": 3.4,
+                            "unitOfMeasure": null,
+                            "quantityOrdered": 4
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
