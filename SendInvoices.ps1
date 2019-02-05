@@ -1,6 +1,10 @@
 Param(
-  [bool]$test = $False,
-  [int]$orderId = -1
+  [bool]$test = $False
 )
 
-.\scripts\SendDocumentsToEdiApi.ps1 -configPrefix "invoice" -ediApiEndpoint "invoices" -logPrefix "SendInvoicesLog_" -readableName "send invoices" -orderId $orderId -test $test
+.\scripts\SendDocumentsToEdiApi.ps1 `
+    -configPrefix "invoice" `
+    -ediApiEndpoint "invoices" `
+    -logPrefix "SendInvoicesLog_" `
+    -readableName "send invoices" `
+    -test $test

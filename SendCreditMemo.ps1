@@ -1,6 +1,5 @@
 Param(
-  [bool]$test = $False,
-  [int]$orderId = -1
+  [bool]$test = $False
 )
 
 .\scripts\SendDocumentsToEdiApi.ps1 `
@@ -9,5 +8,4 @@ Param(
     -logPrefix "SendCreditMemosLog_" `
     -readableName "send credit memos" `
     -ediApiEndpointPrefix "purchase-orders" `
-    -orderId $orderId `
     -test $test

@@ -51,14 +51,10 @@ try {
 
                 if($orderId -ne -1 ){
                     $entityId = $orderId;
-                    Add-LogEntry "EntityId source (1) orderId param: $entityId"
-                }
-                elseif($ediApiEndpointPrefix -eq "purchase-orders"){
-                    $entityId = $data.buyer.purchaseOrderNumber;
-                    Add-LogEntry "EntityId source (2) data file purchaseOrderNumber: $entityId"
+                    Add-LogEntry "EntityId source orderId param: $entityId"
                 } else {
                     $entityId = $data.orderId;
-                    Add-LogEntry "EntityId source (3) data file orderId: $entityId"
+                    Add-LogEntry "EntityId source data file orderId: $entityId"
                 }
 
                 $url = "$($config.posAPIUri)$ediApiEndpointPrefix/$($entityId)/$ediApiEndpoint"
