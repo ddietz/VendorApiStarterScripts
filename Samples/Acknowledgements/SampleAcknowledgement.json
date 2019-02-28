@@ -1,111 +1,307 @@
 {
-	"orderId": 17511380,
-    "accountNumber": "1236GD",
-    "internalVendorNumber": "12345",
-	"hasAcceptedAsIs": true,
-    "hasRejectedAsIs": false,
-    "memo": "PowerShell Sample Order Acknowledgement",
-    "storeId": 12345,
-    "vendorId": 12356,
-    "itemCount": 12,
-    "purchaseOrderNumber": "123456767",
-    "dateOrdered": "2018-07-28T17:08:45.138Z",
-	"billingTerms": [
-		{
-			"basisDateCode": "3",
-			"description": "10% off for 15 days",
-			"discountAmount": 10,
-			"discountDaysDue": 15,
-			"discountDueDate": "2018-10-01T18:36:46.299Z",
-			"discountPercent": 0,
-			"netDaysDue": 30,
-			"netDueDate": "2018-10-01T18:36:46.299Z"
-		}
-    ],
-    "carrier": {
-      "identificationCode": "FedEx",
-      "routing": "123456700"
+    "orderId": 17511380,
+    "geniusCentral": {
+        "documentId": 0,
+        "buyerId": 0,
+        "buyerName": null,
+        "vendorId": 0,
+        "version": 2,
+        "ediDocumentFileName": null,
+        "uniqueKey": null,
+        "orderSource": null
     },
-	"contactInformation": [
-		{
-		  "companyName": "Company Name",
-		  "name": "First Last",
-		  "phone": "7271234567",
-		  "email": "first.last@testco.test",
-		  "address": {
-			"address1": "1234 Main st",
-			"address2": "Ste 123",
-			"city": "Citysville",
-			"country": "US",
-			"postalCode": "12345",
-			"state": "CO"
-		  }
-		}
-	],
-	"lineItems": [
-      {
-        "isRejected": false,
-        "unitOfMeasure": "EA",
-        "casePackSize": 1,
-        "transitChange": {
-          "deliveryDate": "2018-07-28T17:08:45.138Z"
+    "vendor": {
+        "accountNumber": "1236GD"
+    },
+    "buyer": {
+        "purchaseOrderNumber": "123456767",
+        "storeNumber": null,
+        "vendorNumber": "12345"
+    },
+    "isRejected": false,
+    "dateOrdered": "2018-07-28T17:08:45.138Z",
+    "dateAcknowledged": "2018-07-27T20:31:27.34Z",
+    "adminContact": {
+        "type": "buyerNameOrDepartment",
+        "companyName": null,
+        "name": "First Last",
+        "phone": "7271234567",
+        "email": "bleh@bloh.com",
+        "address": {
+            "address1": "1234 Main st",
+            "address2": "Ste 123",
+            "city": "Citysville",
+            "state": "CO",
+            "country": "US",
+            "postalCode": "12345"
+        }
+    },
+    "shipTo": null,
+    "shipFrom": null,
+    "billingTerms": [
+        {
+            "dueDateBasis": "invoiceDate",
+            "netDaysDue": 30,
+            "netDueDate": null,
+            "discountDaysDue": 15,
+            "discountDueDate": null,
+            "discountAmount": 0,
+            "discountPercent": 10,
+            "description": "10% off for 15 days"
+        }
+    ],
+    "transitDetails": {
+        "deliveryDate": "2018-07-25T19:03:00.326Z",
+        "pickupDate": null,
+        "shipmentDate": "2018-07-20T19:03:00.326Z"
+    },
+    "carrier": {
+        "standardCarrierAlphaCode": "FedEx",
+        "name": "123456700",
+        "transportationMethod": null
+    },
+    "notes": [
+        {
+            "type": "",
+            "text": [
+                "PowerShell Sample Order Acknowledgement"
+            ]
+        }
+    ],
+    "lineItems": [
+        {
+            "original": {
+                "lineNumber": "1",
+                "sku": "12345",
+                "upc": "123456789012",
+                "gtin": null,
+                "buyerItemNumber": null,
+                "description": "blah blah blah",
+                "casePackSize": 1,
+                "unitPrice": 1.23,
+                "unitOfMeasure": "CS",
+                "quantityOrdered": 4,
+                "additionalUnitOfMeasure": null,
+                "size": null,
+                "ean": null,
+                "idQualifier1": "UP",
+                "productId1": "123456789012",
+                "idQualifier2": "VN",
+                "productId2": "12345",
+                "idQualifier3": null,
+                "productId3": null
+            },
+            "replacement": {
+                "lineNumber": null,
+                "sku": "SUB123",
+                "upc": "123456789111",
+                "gtin": null,
+                "buyerItemNumber": null,
+                "description": "blah blah blah",
+                "casePackSize": 1,
+                "unitPrice": 0,
+                "unitOfMeasure": "EA",
+                "quantityOrdered": 4,
+                "additionalUnitOfMeasure": null,
+                "size": null,
+                "ean": null,
+                "idQualifier1": "UP",
+                "productId1": "123456789111",
+                "idQualifier2": "VN",
+                "productId2": "SUB123",
+                "idQualifier3": null,
+                "productId3": null
+            },
+            "quantityAcknowledged": 2,
+            "quantityOrdered": 4,
+            "originalUnitPrice": 0,
+            "isRejected": false,
+            "memo": "line item memo",
+            "transitChange": {
+                "deliveryDate": "2018-07-28T17:08:45.138Z",
+                "pickupDate": null,
+                "shipmentDate": null
+            },
+            "acknowledgments": [
+                {
+                    "statusCode": "IS",
+                    "quantity": 2,
+                    "unitOfMeasure": "EA",
+                    "dateQualifier": null,
+                    "date": null
+                },
+                {
+                    "statusCode": "IQ",
+                    "quantity": 2,
+                    "unitOfMeasure": "EA",
+                    "dateQualifier": null,
+                    "date": null
+                },
+                {
+                    "statusCode": "DR",
+                    "quantity": 2,
+                    "unitOfMeasure": "EA",
+                    "dateQualifier": "067",
+                    "date": "2018-07-28T17:08:45.138Z"
+                }
+            ]
         },
-        "substitutions": [
-          {
-            "sortIndex": 1,
-            "sku": "SUB123",
-            "upc": "123456789111"
-          }
-        ],
-        "memo": "line item memo",
-        "quantityOrdered": 4,
-        "quantityAcknowledged": 2,
-        "description": "sample description 1",
-        "unitPrice": 1.23,
-        "sku": "12345",
-        "upc": "123456789012",
-        "lineNumber": "1"
-      },
-      {
-        "isRejected": true,
-        "unitOfMeasure": "EA",
-        "casePackSize": 1,
-        "quantityOrdered": 13,
-        "quantityAcknowledged": 13,
-        "description": "sample description 3",
-        "unitPrice": 1.23,
-        "sku": "12347",
-        "upc": "123456789014",
-        "lineNumber": "3"
-      },
-      {
-        "isRejected": false,
-        "unitOfMeasure": "EA",
-        "casePackSize": 1,
-        "quantityOrdered": 4,
-        "quantityAcknowledged": 4,
-        "description": "sample description 4",
-        "unitPrice": 1.23,
-        "sku": "12348",
-        "upc": "123456789015",
-        "lineNumber": "4"
-      },
-      {
-        "isRejected": false,
-        "unitOfMeasure": "EA",
-        "casePackSize": 1,
-        "quantityOrdered": 8,
-        "quantityAcknowledged": 8,
-        "description": "sample description 5",
-        "unitPrice": 1.23,
-        "sku": "12349",
-        "upc": "123456789016",
-        "lineNumber": "5"
-      }
-	],
-	"transitDetails": {
-      "deliveryDate": "2018-07-25T19:03:00.326Z",
-      "pickupDate": null,
-      "shipmentDate": "2018-07-20T19:03:00.326Z"
-	}
+        {
+            "original": {
+                "lineNumber": "2",
+                "sku": "12346",
+                "upc": "123456789013",
+                "gtin": null,
+                "buyerItemNumber": null,
+                "description": "blah blah blah",
+                "casePackSize": 1,
+                "unitPrice": 1.23,
+                "unitOfMeasure": "LB",
+                "quantityOrdered": 11,
+                "additionalUnitOfMeasure": null,
+                "size": null,
+                "ean": null,
+                "idQualifier1": "UP",
+                "productId1": "123456789013",
+                "idQualifier2": "VN",
+                "productId2": "12346",
+                "idQualifier3": null,
+                "productId3": null
+            },
+            "replacement": null,
+            "quantityAcknowledged": 11,
+            "quantityOrdered": 11,
+            "originalUnitPrice": 0,
+            "isRejected": false,
+            "memo": null,
+            "transitChange": null,
+            "acknowledgments": [
+                {
+                    "statusCode": "IA",
+                    "quantity": 11,
+                    "unitOfMeasure": "LB",
+                    "dateQualifier": null,
+                    "date": null
+                }
+            ]
+        },
+        {
+            "original": {
+                "lineNumber": "3",
+                "sku": "12347",
+                "upc": "123456789014",
+                "gtin": null,
+                "buyerItemNumber": null,
+                "description": "blah blah blah",
+                "casePackSize": 1,
+                "unitPrice": 1.23,
+                "unitOfMeasure": "EA",
+                "quantityOrdered": 13,
+                "additionalUnitOfMeasure": null,
+                "size": null,
+                "ean": null,
+                "idQualifier1": "UP",
+                "productId1": "123456789014",
+                "idQualifier2": "VN",
+                "productId2": "12347",
+                "idQualifier3": null,
+                "productId3": null
+            },
+            "replacement": null,
+            "quantityAcknowledged": 0,
+            "quantityOrdered": 13,
+            "originalUnitPrice": 0,
+            "isRejected": false,
+            "memo": null,
+            "transitChange": null,
+            "acknowledgments": [
+                {
+                    "statusCode": "IQ",
+                    "quantity": null,
+                    "unitOfMeasure": null,
+                    "dateQualifier": null,
+                    "date": null
+                }
+            ]
+        },
+        {
+            "original": {
+                "lineNumber": "4",
+                "sku": "12348",
+                "upc": "123456789015",
+                "gtin": null,
+                "buyerItemNumber": null,
+                "description": "blah blah blah",
+                "casePackSize": 1,
+                "unitPrice": 1.23,
+                "unitOfMeasure": "EA",
+                "quantityOrdered": 4,
+                "additionalUnitOfMeasure": null,
+                "size": null,
+                "ean": null,
+                "idQualifier1": "UP",
+                "productId1": "123456789015",
+                "idQualifier2": "VN",
+                "productId2": "12348",
+                "idQualifier3": null,
+                "productId3": null
+            },
+            "replacement": null,
+            "quantityAcknowledged": 4,
+            "quantityOrdered": 4,
+            "originalUnitPrice": 0,
+            "isRejected": false,
+            "memo": null,
+            "transitChange": null,
+            "acknowledgments": [
+                {
+                    "statusCode": "IA",
+                    "quantity": 4,
+                    "unitOfMeasure": "EA",
+                    "dateQualifier": null,
+                    "date": null
+                }
+            ]
+        },
+        {
+            "original": {
+                "lineNumber": "5",
+                "sku": "12349",
+                "upc": "123456789016",
+                "gtin": null,
+                "buyerItemNumber": null,
+                "description": "blah blah blah",
+                "casePackSize": 1,
+                "unitPrice": 1.23,
+                "unitOfMeasure": "EA",
+                "quantityOrdered": 8,
+                "additionalUnitOfMeasure": null,
+                "size": null,
+                "ean": null,
+                "idQualifier1": "UP",
+                "productId1": "123456789016",
+                "idQualifier2": "VN",
+                "productId2": "12349",
+                "idQualifier3": null,
+                "productId3": null
+            },
+            "replacement": null,
+            "quantityAcknowledged": 8,
+            "quantityOrdered": 8,
+            "originalUnitPrice": 0,
+            "isRejected": false,
+            "memo": null,
+            "transitChange": null,
+            "acknowledgments": [
+                {
+                    "statusCode": "IA",
+                    "quantity": 8,
+                    "unitOfMeasure": "EA",
+                    "dateQualifier": null,
+                    "date": null
+                }
+            ]
+        }
+    ],
+    "type": "AC"
 }
