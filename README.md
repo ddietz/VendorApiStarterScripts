@@ -34,3 +34,42 @@ These scripts are intended to run in PowerShell on Windows
     * Set `"outputToConsole": false` in `config.json` if that is your preference
     * Test with your specific configuration
     * Test in Production with your specific configuration
+
+## Testing with cURL
+It is *highly* recommended to do command line testing by using the examples on the [API documentation](https://posapi.dev.geniuscentral.com/swagger/index.html) page. This will allow you to easily test API calls in the browser before possibly getting lost on the command line.
+
+### Prerequisites
+1. A command line capable of running cURL.
+    * Powershell includes a fake alias for curl which does not work
+    * If you want to do this testing on Windows it is highly recommended to install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) which will provide a complete shell environment. If you do not have a preference, install Ubuntu.
+1. The following packages: `curl` and `jq`
+    * If you just installed WSL and Ubuntu install these packages by entering the following command:
+        ```sh
+        sudo apt install -y curl jq
+        ```
+
+### Load configuration data
+If you followed the above steps you should have a client id and a client secret from customer support in the `config.json` file. The following snippet will load those values into environment variables to make accessing them later much easer and more secure.
+```sh
+$(cat config.json | jq -r 'to_entries|map("export \(.key)=\(.value|tostring)")|.[]' | grep client)
+```
+
+### Get your token
+This following snippet will get a new token and load it into the `$access_token` environment variable:
+```sh
+$(curl -X POST https://idsrv.dev.geniuscentral.com/connect/token -d "scope=posClient&client_secret=$clientSecret&client_id=$clientId&grant_type=client_credentials" | jq -r 'to_entries|map("export \(.key)=\(.value|tostring)")|.[]' | grep access_token)
+```
+* From now on the setup is done and we can simply use the authentication token by specifying it from the `$access_token` environment variable
+* The same token can be used for the swagger API documentation at https://posapi.dev.geniuscentral.com/swagger/index.html
+     * Click "Authorize" and enter "Bearer [value of $access_token]"
+     * All the examples should now be usable
+     * All examples will also have a curl usage
+
+### Sample usage of the API from the command line
+#### Get a single confirmed purchase order:
+```sh
+curl -X GET "https://posapi.dev.geniuscentral.com/purchase-orders?confirmed=true&count=1" \
+     -H "accept: application/json" \
+     -H "Authorization: Bearer $access_token" \
+     | jq
+```
