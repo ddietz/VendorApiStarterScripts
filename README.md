@@ -42,11 +42,16 @@ It is *highly* recommended to do command line testing by using the examples on t
 1. A command line capable of running cURL.
     * Powershell includes a fake alias for curl which does not work
     * If you want to do this testing on Windows it is highly recommended to install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) which will provide a complete shell environment. If you do not have a preference, install Ubuntu.
-1. The following packages: `curl` and `jq`
+1. The following packages: `git`, `curl`, and `jq`
     * If you just installed WSL and Ubuntu install these packages by entering the following command:
         ```sh
-        sudo apt install -y curl jq
+        sudo apt install -y git curl jq
         ```
+1. The source code repository
+    ```sh
+    git clone https://github.com/GeniusCentral/VendorApiStarterScripts.git VendorScripts
+    cd VendorScripts
+    ```
 
 ### Load configuration data
 If you followed the above steps you should have a client id and a client secret from customer support in the `config.json` file. The following snippet will load those values into environment variables to make accessing them later much easer and more secure.
