@@ -43,8 +43,9 @@ It is *highly* recommended to do command line testing by using the examples on t
     * Powershell includes a fake alias for curl which does not work
     * If you want to do this testing on Windows it is highly recommended to install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10) which will provide a complete shell environment. If you do not have a preference, install Ubuntu.
 1. The following packages: `git`, `curl`, and `jq`
-    * If you just installed WSL and Ubuntu install these packages by entering the following command:
+    * If you just installed WSL and Ubuntu install these packages by entering the following commands:
         ```sh
+        sudo apt update
         sudo apt install -y git curl jq
         ```
 1. The source code repository
@@ -52,23 +53,26 @@ It is *highly* recommended to do command line testing by using the examples on t
     git clone https://github.com/GeniusCentral/VendorApiStarterScripts.git VendorScripts
     cd VendorScripts
     ```
-
-### Load configuration data
-If you followed the above steps you should have a client id and a client secret from customer support in the `config.json` file. The following snippet will load those values into environment variables to make accessing them later much easer and more secure.
-```sh
-$(cat config.json | jq -r 'to_entries|map("export \(.key)=\(.value|tostring)")|.[]' | grep client)
-```
-
-### Get your token
-This following snippet will get a new token and load it into the `$access_token` environment variable:
-```sh
-$(curl -X POST https://idsrv.dev.geniuscentral.com/connect/token -d "scope=posClient&client_secret=$clientSecret&client_id=$clientId&grant_type=client_credentials" | jq -r 'to_entries|map("export \(.key)=\(.value|tostring)")|.[]' | grep access_token)
-```
-* From now on the setup is done and we can simply use the authentication token by specifying it from the `$access_token` environment variable
-* The same token can be used for the swagger API documentation at https://posapi.dev.geniuscentral.com/swagger/index.html
-     * Click "Authorize" and enter "Bearer [value of $access_token]"
-     * All the examples should now be usable
-     * All examples will also have a curl usage
+1. Load configuration data
+    * If you followed the above steps you should have a client id and a client secret from customer support in the `config.json` file. The following snippet will load those values into environment variables to make accessing them later much easer and more secure.
+        ```sh
+        $(cat config.json | jq -r 'to_entries|map("export \(.key)=\(.value|tostring)")|.[]' | grep client)
+        ```
+1. Get your token
+    * This following snippet will get a new token and load it into the `$access_token` environment variable:
+        ```sh
+        $(curl -X POST https://idsrv.dev.geniuscentral.com/connect/token -d "scope=posClient&client_secret=$clientSecret&client_id=$clientId&grant_type=client_credentials" | jq -r 'to_entries|map("export \(.key)=\(.value|tostring)")|.[]' | grep access_token)
+        ```
+    * To view the token run the following command:
+        ```sh
+        echo $access_token
+        ```
+1. From now on the setup is done and we can simply use the authentication token by specifying it from the `$access_token` environment variable
+    * The token value can be retrieved by running `echo $access_token` from the shell
+    * The same token can be used for the swagger API documentation at https://posapi.dev.geniuscentral.com/swagger/index.html
+        * Click "Authorize" and enter "Bearer [value of $access_token]"
+        * All the examples should now be usable
+        * All examples will also have a curl usage
 
 ### Sample usage of the API from the command line
 #### Get a single confirmed purchase order:
