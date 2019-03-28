@@ -78,19 +78,36 @@ It is *highly* recommended to do command line testing by using the examples on t
 ### Sample usage of the API from the command line
 Most usages of the API fall into one of two categories: GETting data or POSTing data. Below are two examples of how to perform one of each of those operations. The above preceding steps to load the configuration data and get a token should have been followed for the following examples to function correctly.
 
-#### GET Example: Get a single confirmed purchase order:
+#### View a confirmed order
 ```sh
-curl -X GET "https://posapi.dev.geniuscentral.com/purchase-orders?confirmed=true&count=1" \
-     -H "accept: application/json" \
-     -H "Authorization: Bearer $access_token" \
-     | jq
+curl -X \
+  GET "https://posapi.dev.geniuscentral.com/purchase-orders?confirmed=true&count=1" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer $access_token" \
+  | jq
+``` 
+
+#### Get and acknowledge receipt of a single unconfirmed purchase order:
+```sh
+# step 1: get the order id of a single unconfirmed order
+declare -x order_id=$(curl -X \
+  GET "https://posapi.dev.geniuscentral.com/purchase-orders?confirmed=false&count=1" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer $access_token" \
+  | jq ".items[].orderId")
+
+# step 2: acknowledge receipt of the order
+curl -X PUT \
+  https://posapi.dev.geniuscentral.com/purchase-orders/$order_id/receipts \
+  -H 'Accept: application/json' \
+  -H 'Authorization: Bearer $access_token' \
+  -H 'Content-Type: application/json' \
+  -d ""
 ```
-#### POST Example: Post a shipping notice for an order:
+#### Post a shipping notice for a confirmed order:
 ```sh
 # step 1: get an order id from a purchase order (same code as above, putting a single field into an environment variable)
-declare -x order_id=$(curl -X GET "https://posapi.dev.geniuscentral.com/
-purchase-orders?confirmed=true&count=1" -H "accept: application/json" -H "Authorization: Bearer $access_token" | jq ".it
-ems[].orderId")
+declare -x order_id=$(curl -X GET "https://posapi.dev.geniuscentral.com/purchase-orders?confirmed=true&count=1" -H "accept: application/json" -H "Authorization: Bearer $access_token" | jq ".items[].orderId")
 
 # step 2: post a new shipping notice to that purchase order (the -d option should contain the JSON formatted data you want to be posted)
 curl \
