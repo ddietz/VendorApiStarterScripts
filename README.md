@@ -118,3 +118,101 @@ curl \
   -d "{ \"geniusCentral\": { \"version\": 2 }, \"vendor\": { \"shipmentId\": \"12345678934857346\", \"trackingNumber\": \"1235\", \"billOfLadingNumber\": \"12365\", \"carrierReferenceNumber\": \"1234\" }, \"buyer\": { \"storeNumber\": 100331, \"vendorNumber\": \"12365123\" }, \"dateNotified\": \"2019-02-15T14:22:50.227\", \"dateOrdered\": \"2018-07-28T17:08:45.138Z\", \"packages\": [{ \"packagingMaterial\": \"carton\", \"quantity\": 3, \"grossWeight\": 123, \"unitOfMeasure\": \"LB\" } ], \"carrier\": { \"standardCarrierAlphaCode\": \"UPS\", \"name\": \"1K4K3J4F3IF345346J\" }, \"adminContact\": { \"companyName\": \"Dog Food Proveyors, Inc\", \"name\": \"Testy McTesterson\", \"phone\": \"515-551-1155\", \"email\": \"testy.mctesterson@dfp.com\" }, \"transitDetails\": { \"deliveryDate\": \"2018-07-25T17:16:59.519Z\", \"pickupDate\": null, \"shipmentDate\": \"2018-07-25T17:16:59.519Z\" }, \"shipFrom\": { \"dunsNumber\": \"12345678901234\", \"buyerAssignedCode\": \"123563\", \"companyName\": \"Dog Food Proveyors, Inc\", \"name\": \"Shipping Dept\", \"phone\": \"555-555-5555\", \"email\": \"shipping@dfp.com\", \"address\": { \"address1\": \"123 Test Rd\", \"address2\": \"Suite 100\", \"city\": \"Orlando\", \"state\": \"FL\", \"country\": \"USA\", \"postalCode\": \"32819\" } }, \"shipTo\": { \"dunsNumber\": \"12345678901234\", \"buyerAssignedCode\": \"123563\", \"companyName\": null, \"name\": \"Joney McHorseson\", \"phone\": \"727-345-2395\", \"email\": \"joney@mchorseon.com\", \"address\": { \"address1\": \"1234 Horsey Street\", \"address2\": \"Suite 100\", \"city\": \"Ponyville\", \"state\": \"MT\", \"country\": \"USA\", \"postalCode\": \"23837\" } }, \"orders\": [{ \"purchaseOrderNumber\": \"123456767\", \"accountNumber\": \"TEST1234\", \"shippingContainers\": [{ \"shippingContainerCodes\": [\"12345\"], \"lineItems\": [{ \"quantityShipped\": 0, \"additionalDescriptions\": [\"doggie food 16oz\", \"delicious yum-yums\"], \"lotNumber\": \"ABCD1234\", \"expirationDate\": null, \"productionDate\": null, \"bestByDate\": null, \"lineNumber\": \"1\", \"sku\": \"ABC1234\", \"upc\": \"123456789012\", \"gtin\": \"00123456789012\", \"description\": \"Dog Food 16oz - may contain cornmeal\", \"casePackSize\": null, \"unitPrice\": 3.4, \"unitOfMeasure\": null, \"quantityOrdered\": 4, \"additionalUnitOfMeasure\": null, \"size\": null, \"ean\": null } ] } ] } ]}" \
   | jq
 ```
+
+### In-Network Orders
+
+#### View a pending order
+```sh
+curl -X \
+  GET "https://posapi.dev.geniuscentral.com/in-network/orders?pending=true&count=1" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer $access_token" \
+  | jq
+```
+
+#### Get an in-network order, post an invoice:
+```sh
+# step 1: get the order id of a single pending order
+declare -x order_id=$(curl -X \
+  GET "https://posapi.dev.geniuscentral.com/in-network/orders?pending=true&count=1" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer $access_token" \
+  | jq ".items[].orderID")
+
+# step 2: post a new invoice to that order (the -d option should contain the JSON formatted data you want to be posted)
+curl \
+  -X POST "https://posapi.dev.geniuscentral.com/in-network/invoices/" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer $access_token" \
+  -H "Content-Type: application/json-patch+json" \
+  -d "{
+	\"header\": {
+		\"orderID\": $order_id,
+		\"invoiceNumber\": \"9999\",
+		\"shipDate\": \"2018-12-21T00:00:00\",
+		\"invoiceDate\": \"2018-12-20T00:00:00\",
+		\"subTotal\": 8,
+		\"discount\": 2.99,
+		\"tax\": 0,
+		\"freight\": 5,
+		\"orderTotal\": 12
+	},
+	\"details\": [
+		{
+			\"upc\": \"00000002256755\",
+			\"supplierSKU\": \"2256\",
+			\"itemDescription\": \"Glen's Apple Cider 16 oz\",
+			\"shippedQuantity\": 1,
+			\"orderQuantity\": 1,
+			\"priceEa\": 8,
+			\"priceCase\": 0,
+			\"srp\": 6.99,
+			\"wholesale\": 9.99,
+			\"priceExtension\": 8,
+			\"brandDescription\": \"Glenville Mangos Market\",
+			\"packSize\": \"16 oz\",
+			\"discountDesc\": null,
+			\"orderUnits\": \"EA\",
+			\"casePackSize\": 16
+		}
+	]
+}" \
+  | jq
+```
+
+#### Get an in-network order, post a shipping notice to it:
+```sh
+# step 1: get the order id of a single pending order
+declare -x order_id=$(curl -X \
+  GET "https://posapi.dev.geniuscentral.com/in-network/orders?pending=true&count=1" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer $access_token" \
+  | jq ".items[].orderID")
+
+# step 2: post a new shipping notice to that order (the -d option should contain the JSON formatted data you want to be posted)
+curl \
+  -X POST "https://posapi.dev.geniuscentral.com/in-network/shipping-notices/" \
+  -H "accept: application/json" \
+  -H "Authorization: Bearer $access_token" \
+  -H "Content-Type: application/json-patch+json" \
+  -d "{
+	\"header\": {
+		\"orderID\": $order_id,
+		\"shipDate\": \"2018-12-21T00:00:00\",
+		\"trackingNumber\": \"AZ12ABCDEFG123456\",
+	},
+	\"details\": [
+		{
+			\"shippedQuantity\": 1,
+			\"upc\": \"00000002256755\",
+			\"sku\": \"2256\",
+			\"unitOfMeasure\": \"EA\",
+			\"description\": \"Glen's Apple Cider 16 oz\",
+		}
+	]
+}" \
+  | jq
+```
+
+
+
