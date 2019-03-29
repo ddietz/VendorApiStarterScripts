@@ -54,7 +54,7 @@ It is *highly* recommended to do command line testing by using the examples on t
     cd VendorScripts
     ```
 1. Load configuration data
-    * If you followed the above steps you should have a client id and a client secret from customer support in the `config.json` file. The following snippet will load those values into environment variables to make accessing them later much easer and more secure.
+    * If you followed the above steps you should have a client id and a client secret from customer support in the `config.json` file. The following snippet will load those values into environment variables to make accessing them later much easier and more secure.
         ```sh
         $(cat config.json | jq -r 'to_entries|map("export \(.key)=\(.value|tostring)")|.[]' | grep client)
         ```
